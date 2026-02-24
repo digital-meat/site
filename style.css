@@ -96,11 +96,8 @@ header {
 
 .announcement a {
   color: var(--green);
-  text-decoration: none;
-}
-
-.announcement a:hover {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ---- Main ---- */
@@ -219,11 +216,8 @@ main {
 
 .live-detail-inner a {
   color: var(--green);
-  text-decoration: none;
-}
-
-.live-detail-inner a:hover {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ---- Timetable ---- */
