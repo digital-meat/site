@@ -1,18 +1,23 @@
 {
   "lives": [
     {
-      "id": "example-2026-03-15",
-      "title": "サンプルライブ",
+      "id": "kerodon-2026-03-15",
+      "title": "kerodon",
       "date": "2026-03-15",
-      "open": "18:00",
-      "start": "18:30",
-      "venue": "渋谷 CLUB QUATTRO",
-      "address": "東京都渋谷区宇田川町32-13",
-      "price": "前売 ¥3,000 / 当日 ¥3,500（+1D ¥600）",
-      "flyer": "",
-      "description": "これはサンプルデータです。実際のライブ情報に差し替えてください。",
-      "links": [],
-      "visible": false
+      "open": "17:00",
+      "start": "17:30",
+      "venue": "大宮ヒソミネ",
+      "address": "〒331-0812 埼玉県さいたま市北区宮原町2丁目7-12（宮原駅）",
+      "price": "前売 ¥2,200 / 当日 ¥2,200（+1オーダー）",
+      "flyer": "content/images/kerodon-2026-03-15.jpg",
+      "description": "Digital Meat 出演: 18:10〜18:40",
+      "detail": "17:30〜18:00 dianKeto / 18:10〜18:40 Digital Meat / 18:50〜19:20 シールドルーム / 19:30〜20:00 LEVELTEN / 20:10〜20:40 車道の犬 / 20:50〜21:20 asia++",
+      "acts": ["asia++", "車道の犬", "LEVELTEN", "シールドルーム", "Digital Meat", "dianKeto"],
+      "links": [
+        { "url": "https://hisomine.com/schedules/view/5205", "label": "大宮ヒソミネ イベント詳細" },
+        { "url": "https://maps.app.goo.gl/DxyxXrceoEiagsnn7", "label": "Google Maps" }
+      ],
+      "visible": true
     }
   ]
 }
