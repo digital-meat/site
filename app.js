@@ -152,9 +152,26 @@
           html += "<p>" + escapeHtml(live.description) + "</p>";
         }
         if (live.detail) {
+          var rows = live.detail.split("/").map(function (entry) {
+            entry = entry.trim();
+            var m = entry.match(/^(\S+)\s+(.+)$/);
+            if (m) {
+              var act = m[2].trim();
+              var actHtml =
+                act === "Digital Meat"
+                  ? '<strong style="color:var(--green)">' + escapeHtml(act) + "</strong>"
+                  : escapeHtml(act);
+              return (
+                "<tr><td>" + escapeHtml(m[1]) + "</td><td>" + actHtml + "</td></tr>"
+              );
+            }
+            return "<tr><td colspan=\"2\">" + escapeHtml(entry) + "</td></tr>";
+          });
           html +=
-            "<p class=\"label\" style=\"margin-top:8px;\">タイムテーブル:</p>" +
-            "<p>" + escapeHtml(live.detail) + "</p>";
+            '<table class="timetable">' +
+            "<tr><th>時間</th><th>出演</th></tr>" +
+            rows.join("") +
+            "</table>";
         }
         if (live.links && live.links.length > 0) {
           html += "<p>";
@@ -167,14 +184,6 @@
               "</a> ";
           });
           html += "</p>";
-        }
-        if (live.flyer) {
-          html +=
-            '<img class="flyer-img" src="' +
-            escapeHtml(live.flyer) +
-            '" alt="' +
-            escapeHtml(live.title) +
-            ' フライヤー" loading="lazy">';
         }
 
         html += "</div></div></div>";

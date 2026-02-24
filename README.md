@@ -11,7 +11,6 @@ app.js              ... レンダリング処理（編集不要）
 content/
   site.json         ... バンド情報・メンバー・SNSリンク
   lives.json        ... ライブ情報
-  images/           ... フライヤー画像などを格納
 ```
 
 **コンテンツの更新は `content/` フォルダ内の JSON ファイルを編集するだけです。**
@@ -47,8 +46,8 @@ HTML・CSS・JS を触る必要はありません。
   "venue": "会場名",
   "address": "住所",
   "price": "前売 ¥3,000 / 当日 ¥3,500（+1D ¥600）",
-  "flyer": "content/images/event-2026-04-01.jpg",
   "description": "補足説明があれば",
+  "detail": "18:00〜18:30 バンドA / 18:40〜19:10 Digital Meat / 19:20〜19:50 バンドB",
   "links": [
     { "url": "https://example.com/ticket", "label": "チケット予約" }
   ],
@@ -66,28 +65,10 @@ HTML・CSS・JS を触る必要はありません。
 | `venue` | No | 会場名 |
 | `address` | No | 住所 |
 | `price` | No | 料金 |
-| `flyer` | No | フライヤー画像のパスまたは外部URL |
-| `description` | No | 補足説明 |
+| `description` | No | 補足説明（サマリー行にも表示される） |
+| `detail` | No | タイムテーブル（`時間 バンド名 / 時間 バンド名` 形式。テーブル表示される） |
 | `links` | No | 関連リンクの配列 |
 | `visible` | Yes | `true` で表示、`false` で非表示 |
-
-### フライヤー画像を設定する
-
-#### 方法1: 外部URLを使う（スマホでも簡単・おすすめ）
-
-1. [Imgur](https://imgur.com/)、[Gyazo](https://gyazo.com/) などに画像をアップ
-2. 画像URLをコピー
-3. `lives.json` の `flyer` にそのまま貼る
-
-```json
-"flyer": "https://i.imgur.com/xxxxx.jpg"
-```
-
-#### 方法2: リポジトリにアップする（PC向き）
-
-1. GitHub で `content/images/` フォルダを開く
-2. 「Add file」→「Upload files」で画像をアップロード
-3. `lives.json` の `flyer` にパスを設定（例: `"content/images/live-2026-04-01.jpg"`）
 
 ### メンバー情報・SNS を編集する (`content/site.json`)
 
