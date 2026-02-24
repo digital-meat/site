@@ -88,20 +88,23 @@
       .map(function (live) {
         var html = '<div class="live-row">';
 
-        // Summary line (always visible)
+        // Summary (always visible)
         html += '<div class="live-summary">';
-        html += '<span class="live-toggle">&#9654;</span> ';
+        html += '<span class="live-toggle">[+]</span>';
+        html += '<div class="live-summary-text">';
         html +=
-          '<span class="live-date">' + escapeHtml(formatDate(live.date)) + "</span>";
-        html +=
-          '<span class="live-title">' + escapeHtml(live.title) + "</span>";
-        if (live.venue) {
+          '<div class="live-summary-line1">' +
+          '<span class="live-date">' + escapeHtml(formatDate(live.date)) + "</span>" +
+          '<span class="live-title">' + escapeHtml(live.title) + "</span>" +
+          "</div>";
+        var sub = [];
+        if (live.venue) sub.push(escapeHtml(live.venue));
+        if (live.description) sub.push(escapeHtml(live.description));
+        if (sub.length > 0) {
           html +=
-            '<span class="live-venue-hint">@ ' +
-            escapeHtml(live.venue) +
-            "</span>";
+            '<div class="live-summary-line2">' + sub.join(" / ") + "</div>";
         }
-        html += "</div>";
+        html += "</div></div>";
 
         // Detail (collapsed)
         html += '<div class="live-detail"><div class="live-detail-inner">';
@@ -183,6 +186,8 @@
     container.querySelectorAll(".live-row").forEach(function (row) {
       row.querySelector(".live-summary").addEventListener("click", function () {
         row.classList.toggle("open");
+        var toggle = row.querySelector(".live-toggle");
+        toggle.textContent = row.classList.contains("open") ? "[-]" : "[+]";
       });
     });
   }

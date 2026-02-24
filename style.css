@@ -50,10 +50,6 @@ header {
   color: var(--green-dim);
 }
 
-.logo-dot {
-  color: var(--green);
-}
-
 .tagline {
   font-size: 0.8rem;
   color: var(--gray);
@@ -131,14 +127,26 @@ main {
 
 .live-summary {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  align-items: flex-start;
+  gap: 10px;
   padding: 14px 4px;
-  flex-wrap: wrap;
+  cursor: pointer;
 }
 
 .live-summary:hover {
   background: rgba(57, 255, 20, 0.03);
+}
+
+.live-summary-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.live-summary-line1 {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .live-date {
@@ -153,20 +161,17 @@ main {
   font-size: 0.85rem;
 }
 
-.live-venue-hint {
+.live-summary-line2 {
   color: var(--gray);
   font-size: 0.75rem;
-  margin-left: auto;
+  margin-top: 2px;
 }
 
 .live-toggle {
   color: var(--green-dim);
-  font-size: 0.7rem;
-  transition: transform 0.2s;
-}
-
-.live-row.open .live-toggle {
-  transform: rotate(90deg);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  min-width: 2.2em;
 }
 
 .live-detail {
@@ -290,7 +295,4 @@ footer {
     padding: 12px 2px;
   }
 
-  .live-venue-hint {
-    display: none;
-  }
 }
