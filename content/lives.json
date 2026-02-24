@@ -15,7 +15,8 @@
       "acts": ["asia++", "車道の犬", "LEVELTEN", "シールドルーム", "Digital Meat", "dianKeto"],
       "links": [
         { "url": "https://hisomine.com/schedules/view/5205", "label": "大宮ヒソミネ イベント詳細" },
-        { "url": "https://maps.app.goo.gl/DxyxXrceoEiagsnn7", "label": "Google Maps" }
+        { "url": "https://maps.app.goo.gl/DxyxXrceoEiagsnn7", "label": "Google Maps" },
+        { "url": "https://forms.gle/DcZVkmmYJ6wzQahE9", "label": "チケ予約" }
       ],
       "visible": true
     }
