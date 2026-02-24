@@ -46,6 +46,15 @@
       "url": "https://www.youtube.com/@DigitalMeat_JP",
       "label": "@DigitalMeat_JP",
       "note": "Coming Soon…"
+    },
+    {
+      "platform": "MixChannel",
+      "url": "https://mixch.tv/u/18817803",
+      "label": "MixChannel"
     }
-  ]
+  ],
+  "announcement": {
+    "text": "やついフェス予選参加中！毎週火曜19時からセッション配信中",
+    "url": "https://mixch.tv/u/18817803"
+  }
 }

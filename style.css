@@ -86,6 +86,23 @@ header {
   fill: currentColor;
 }
 
+/* ---- Announcement ---- */
+
+.announcement {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--green-text);
+}
+
+.announcement a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.announcement a:hover {
+  text-decoration: underline;
+}
+
 /* ---- Main ---- */
 
 main {
