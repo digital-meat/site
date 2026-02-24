@@ -134,20 +134,6 @@
             escapeHtml(live.price) +
             "</p>";
         }
-        if (live.acts && live.acts.length > 0) {
-          html +=
-            "<p><span class=\"label\">出演: </span>" +
-            live.acts
-              .map(function (a) {
-                return a === "Digital Meat"
-                  ? "<strong style=\"color:var(--green)\">" +
-                      escapeHtml(a) +
-                      "</strong>"
-                  : escapeHtml(a);
-              })
-              .join(" / ") +
-            "</p>";
-        }
         if (live.description) {
           html += "<p>" + escapeHtml(live.description) + "</p>";
         }
