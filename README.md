@@ -11,7 +11,6 @@ app.js              ... レンダリング処理（編集不要）
 content/
   site.json         ... バンド情報・メンバー・SNSリンク
   lives.json        ... ライブ情報
-  news.json         ... ニュース・お知らせ
   images/           ... フライヤー画像などを格納
 ```
 
@@ -20,6 +19,8 @@ HTML・CSS・JS を触る必要はありません。
 
 > **JSON の書き方をミスった場合**: サイト上に赤いエラーメッセージが表示されます。カンマの過不足、閉じカッコの漏れなどを確認してください。
 
+> **ライブの日付が過ぎると**: 自動的にトップから消えます。`lives.json` から消す必要はありません。
+
 ---
 
 ## コンテンツ更新方法
@@ -27,7 +28,7 @@ HTML・CSS・JS を触る必要はありません。
 ### GitHub の Web UI から編集する場合（推奨）
 
 1. GitHub でこのリポジトリを開く
-2. `content/lives.json` や `content/news.json` をクリック
+2. `content/lives.json` をクリック
 3. 右上の鉛筆アイコン（Edit this file）をクリック
 4. JSON を編集
 5. 「Commit changes」ボタンで保存
@@ -59,13 +60,13 @@ HTML・CSS・JS を触る必要はありません。
 |---|---|---|
 | `id` | Yes | ユニークな識別子（何でもOK） |
 | `title` | Yes | ライブ/イベント名 |
-| `date` | Yes | 日付（`YYYY-MM-DD` 形式） |
+| `date` | Yes | 日付（`YYYY-MM-DD` 形式）。過ぎたら自動で非表示 |
 | `open` | No | 開場時間 |
 | `start` | No | 開演時間 |
 | `venue` | No | 会場名 |
 | `address` | No | 住所 |
 | `price` | No | 料金 |
-| `flyer` | No | フライヤー画像のパス |
+| `flyer` | No | フライヤー画像のパスまたは外部URL |
 | `description` | No | 補足説明 |
 | `links` | No | 関連リンクの配列 |
 | `visible` | Yes | `true` で表示、`false` で非表示 |
@@ -74,11 +75,9 @@ HTML・CSS・JS を触る必要はありません。
 
 #### 方法1: 外部URLを使う（スマホでも簡単・おすすめ）
 
-スマホから画像をアップしたいときはこれが一番ラク。
-
-1. [Imgur](https://imgur.com/)、[Gyazo](https://gyazo.com/) などの画像ホスティングサービスに画像をアップ
-2. 画像の URL をコピー（例: `https://i.imgur.com/xxxxx.jpg`）
-3. `lives.json` の `flyer` フィールドに URL をそのまま貼る
+1. [Imgur](https://imgur.com/)、[Gyazo](https://gyazo.com/) などに画像をアップ
+2. 画像URLをコピー
+3. `lives.json` の `flyer` にそのまま貼る
 
 ```json
 "flyer": "https://i.imgur.com/xxxxx.jpg"
@@ -88,23 +87,7 @@ HTML・CSS・JS を触る必要はありません。
 
 1. GitHub で `content/images/` フォルダを開く
 2. 「Add file」→「Upload files」で画像をアップロード
-3. `lives.json` の `flyer` フィールドにパスを設定（例: `"content/images/live-2026-04-01.jpg"`）
-
-> **Tip**: `flyer` フィールドは省略可能です。画像がなければフィールドごと消してOK。
-
-### ニュースを追加する (`content/news.json`)
-
-`news` 配列に以下の形式で追加：
-
-```json
-{
-  "id": "news-id",
-  "date": "2026-03-01",
-  "title": "ニュースタイトル",
-  "body": "ニュース本文をここに書く。",
-  "visible": true
-}
-```
+3. `lives.json` の `flyer` にパスを設定（例: `"content/images/live-2026-04-01.jpg"`）
 
 ### メンバー情報・SNS を編集する (`content/site.json`)
 
@@ -124,8 +107,6 @@ HTML・CSS・JS を触る必要はありません。
 ## ローカルでの確認
 
 ```bash
-# Python が入っている場合
 python3 -m http.server 8000
-
 # ブラウザで http://localhost:8000 を開く
 ```
