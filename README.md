@@ -18,6 +18,8 @@ content/
 **コンテンツの更新は `content/` フォルダ内の JSON ファイルを編集するだけです。**
 HTML・CSS・JS を触る必要はありません。
 
+> **JSON の書き方をミスった場合**: サイト上に赤いエラーメッセージが表示されます。カンマの過不足、閉じカッコの漏れなどを確認してください。
+
 ---
 
 ## コンテンツ更新方法
@@ -68,11 +70,27 @@ HTML・CSS・JS を触る必要はありません。
 | `links` | No | 関連リンクの配列 |
 | `visible` | Yes | `true` で表示、`false` で非表示 |
 
-### フライヤー画像をアップロードする
+### フライヤー画像を設定する
+
+#### 方法1: 外部URLを使う（スマホでも簡単・おすすめ）
+
+スマホから画像をアップしたいときはこれが一番ラク。
+
+1. [Imgur](https://imgur.com/)、[Gyazo](https://gyazo.com/) などの画像ホスティングサービスに画像をアップ
+2. 画像の URL をコピー（例: `https://i.imgur.com/xxxxx.jpg`）
+3. `lives.json` の `flyer` フィールドに URL をそのまま貼る
+
+```json
+"flyer": "https://i.imgur.com/xxxxx.jpg"
+```
+
+#### 方法2: リポジトリにアップする（PC向き）
 
 1. GitHub で `content/images/` フォルダを開く
 2. 「Add file」→「Upload files」で画像をアップロード
 3. `lives.json` の `flyer` フィールドにパスを設定（例: `"content/images/live-2026-04-01.jpg"`）
+
+> **Tip**: `flyer` フィールドは省略可能です。画像がなければフィールドごと消してOK。
 
 ### ニュースを追加する (`content/news.json`)
 

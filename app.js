@@ -22,8 +22,25 @@
   function fetchJSON(url) {
     return fetch(url).then(function (res) {
       if (!res.ok) throw new Error("Failed to fetch " + url);
-      return res.json();
+      return res.text().then(function (text) {
+        try {
+          return JSON.parse(text);
+        } catch (e) {
+          throw new Error(url + " の JSON が壊れています: " + e.message);
+        }
+      });
     });
+  }
+
+  function showError(message) {
+    var el = document.createElement("div");
+    el.style.cssText =
+      "background:#1a0000;border:1px solid #ff4444;color:#ff6666;" +
+      "font-family:monospace;font-size:13px;padding:12px 16px;" +
+      "margin:16px auto;max-width:900px;white-space:pre-wrap;";
+    el.textContent = "⚠ " + message;
+    var main = document.querySelector("main");
+    if (main) main.prepend(el);
   }
 
   // --- Render: Lives ---
@@ -240,5 +257,10 @@
     })
     .catch(function (err) {
       console.error("Failed to load content:", err);
+      showError(
+        "コンテンツの読み込みに失敗しました。\n" +
+        err.message + "\n\n" +
+        "JSON の書き方を確認してください（カンマの過不足、閉じカッコの漏れなど）。"
+      );
     });
 })();
