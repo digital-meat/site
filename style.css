@@ -86,20 +86,6 @@ header {
   fill: currentColor;
 }
 
-/* ---- Announcement ---- */
-
-.announcement {
-  margin-top: 20px;
-  font-size: 0.8rem;
-  color: var(--green-text);
-}
-
-.announcement a {
-  color: var(--green);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 /* ---- Main ---- */
 
 main {
