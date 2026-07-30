@@ -1,6 +1,9 @@
 (function () {
   "use strict";
 
+  var lang = document.body.dataset.lang === "en" ? "en" : "ja";
+  var contentBase = document.body.dataset.contentBase || "content/";
+
   // --- Utility ---
 
   function escapeHtml(str) {
@@ -13,7 +16,9 @@
     var d = new Date(dateStr + "T00:00:00");
     var month = d.getMonth() + 1;
     var day = d.getDate();
-    var weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+    var weekdays = lang === "en"
+      ? ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+      : ["日", "月", "火", "水", "木", "金", "土"];
     var dow = weekdays[d.getDay()];
     return month + "/" + day + " (" + dow + ")";
   }
@@ -36,6 +41,11 @@
         }
       });
     });
+  }
+
+  function liveField(live, key) {
+    var translated = live[key + "_en"];
+    return lang === "en" && translated ? translated : live[key];
   }
 
   function showError(message) {
@@ -69,6 +79,7 @@
 
   function renderLives(data) {
     var container = document.getElementById("lives-container");
+    if (!container) return;
     var lives = (data.lives || []).filter(function (l) {
       return l.visible !== false && !isPast(l.date);
     });
@@ -80,7 +91,9 @@
 
     if (lives.length === 0) {
       container.innerHTML =
-        '<p class="empty-message">現在予定されているライブはありません。</p>';
+        '<p class="empty-message">' +
+        (lang === "en" ? "No upcoming shows are currently announced." : "現在予定されているライブはありません。") +
+        "</p>";
       return;
     }
 
@@ -95,11 +108,11 @@
         html +=
           '<div class="live-summary-line1">' +
           '<span class="live-date">' + escapeHtml(formatDate(live.date)) + "</span>" +
-          '<span class="live-title">' + escapeHtml(live.title) + "</span>" +
+          '<span class="live-title">' + escapeHtml(liveField(live, "title")) + "</span>" +
           "</div>";
         var sub = [];
-        if (live.venue) sub.push(escapeHtml(live.venue));
-        if (live.description) sub.push(escapeHtml(live.description));
+        if (live.venue) sub.push(escapeHtml(liveField(live, "venue")));
+        if (live.description) sub.push(escapeHtml(liveField(live, "description")));
         if (sub.length > 0) {
           html +=
             '<div class="live-summary-line2">' + sub.join(" / ") + "</div>";
@@ -111,14 +124,14 @@
 
         if (live.venue) {
           html +=
-            "<p><span class=\"label\">会場: </span>" +
-            escapeHtml(live.venue) +
+            "<p><span class=\"label\">" + (lang === "en" ? "Venue" : "会場") + ": </span>" +
+            escapeHtml(liveField(live, "venue")) +
             "</p>";
         }
         if (live.address) {
           html +=
-            "<p><span class=\"label\">住所: </span>" +
-            escapeHtml(live.address) +
+            "<p><span class=\"label\">" + (lang === "en" ? "Address" : "住所") + ": </span>" +
+            escapeHtml(liveField(live, "address")) +
             "</p>";
         }
         if (live.open || live.start) {
@@ -126,19 +139,19 @@
           if (live.open) time += "OPEN " + escapeHtml(live.open);
           if (live.open && live.start) time += " / ";
           if (live.start) time += "START " + escapeHtml(live.start);
-          html += "<p><span class=\"label\">時間: </span>" + time + "</p>";
+          html += "<p><span class=\"label\">" + (lang === "en" ? "Time" : "時間") + ": </span>" + time + "</p>";
         }
         if (live.price) {
           html +=
-            "<p><span class=\"label\">料金: </span>" +
-            escapeHtml(live.price) +
+            "<p><span class=\"label\">" + (lang === "en" ? "Price" : "料金") + ": </span>" +
+            escapeHtml(liveField(live, "price")) +
             "</p>";
         }
         if (live.description) {
-          html += "<p>" + escapeHtml(live.description) + "</p>";
+          html += "<p>" + escapeHtml(liveField(live, "description")) + "</p>";
         }
         if (live.detail) {
-          var rows = live.detail.split("/").map(function (entry) {
+          var rows = liveField(live, "detail").split("/").map(function (entry) {
             entry = entry.trim();
             var m = entry.match(/^(\S+)\s+(.+)$/);
             if (m) {
@@ -155,7 +168,7 @@
           });
           html +=
             '<table class="timetable">' +
-            "<tr><th>時間</th><th>出演</th></tr>" +
+            "<tr><th>" + (lang === "en" ? "Time" : "時間") + "</th><th>" + (lang === "en" ? "Act" : "出演") + "</th></tr>" +
             rows.join("") +
             "</table>";
         }
@@ -166,7 +179,7 @@
               '<a href="' +
               escapeHtml(link.url) +
               '" target="_blank" rel="noopener">' +
-              escapeHtml(link.label || link.url) +
+              escapeHtml(lang === "en" ? (link.label_en || link.label || link.url) : (link.label || link.url)) +
               "</a> ";
           });
           html += "</p>";
@@ -192,13 +205,15 @@
   function renderSite(data) {
     // Tagline
     var taglineEl = document.getElementById("tagline");
-    if (data.tagline) {
-      taglineEl.textContent = data.tagline;
+    if (taglineEl && data.tagline) {
+      taglineEl.textContent = lang === "en"
+        ? "We are a Japanese band making music."
+        : data.tagline;
     }
 
     // SNS Icons
     var iconsContainer = document.getElementById("sns-icons");
-    if (data.sns && data.sns.length > 0) {
+    if (iconsContainer && data.sns && data.sns.length > 0) {
       iconsContainer.innerHTML = data.sns
         .map(function (s) {
           var icon = SNS_ICONS[s.platform] || FALLBACK_ICON;
@@ -217,7 +232,7 @@
 
     // Members
     var membersContainer = document.getElementById("members-container");
-    if (data.members && data.members.length > 0) {
+    if (membersContainer && data.members && data.members.length > 0) {
       membersContainer.innerHTML =
         '<div class="members-list">' +
         data.members
@@ -231,7 +246,7 @@
               escapeHtml(m.alias) +
               "</span>" +
               '<span class="member-part">' +
-              escapeHtml(m.part) +
+              escapeHtml(lang === "en" ? (m.instrument || m.part) : m.part) +
               "</span>" +
               "</div>"
             );
@@ -242,19 +257,20 @@
 
     // Formed
     var formedEl = document.getElementById("formed");
-    if (data.formed) {
-      formedEl.textContent = "結成 " + data.formed;
+    if (formedEl && data.formed) {
+      formedEl.textContent = (lang === "en" ? "Formed " : "結成 ") + data.formed;
     }
 
     // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    var yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
   }
 
   // --- Init ---
 
   Promise.all([
-    fetchJSON("content/site.json"),
-    fetchJSON("content/lives.json"),
+    fetchJSON(contentBase + "site.json"),
+    fetchJSON(contentBase + "lives.json"),
   ])
     .then(function (results) {
       renderSite(results[0]);
