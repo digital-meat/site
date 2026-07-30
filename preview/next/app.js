@@ -253,8 +253,8 @@
   // --- Init ---
 
   Promise.all([
-    fetchJSON("content/site.json"),
-    fetchJSON("content/lives.json"),
+    fetchJSON("../../content/site.json"),
+    fetchJSON("../../content/lives.json"),
   ])
     .then(function (results) {
       renderSite(results[0]);
