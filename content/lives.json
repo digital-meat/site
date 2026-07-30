@@ -19,6 +19,32 @@
         { "url": "https://forms.gle/DcZVkmmYJ6wzQahE9", "label": "チケ予約" }
       ],
       "visible": true
+    },
+    {
+      "id": "kerodon-2026-08-23",
+      "title": "kerodon",
+      "date": "2026-08-23",
+      "open": "18:00",
+      "start": "18:30",
+      "venue": "大宮ヒソミネ",
+      "address": "〒331-0812 埼玉県さいたま市北区宮原町2-7-12 1F（宮原駅）",
+      "price": "前売 ¥2,400 / 当日 ¥2,400（+1オーダー）",
+      "description": "Digital Meat 出演: 18:30〜19:00",
+      "detail": "18:30〜19:00 Digital Meat / 19:10〜19:40 Meadow / 19:45〜20:15 ベリヴェリ / 20:25〜20:55 Badger’s Dream / 21:15〜21:45 kill me Elkとzoo zoo Adults",
+      "acts": [
+        "kill me Elkとzoo zoo Adults",
+        "Badger’s Dream",
+        "ベリヴェリ",
+        "Meadow",
+        "Digital Meat"
+      ],
+      "links": [
+        {
+          "url": "https://hisomine.com/schedules/view/5405",
+          "label": "大宮ヒソミネ イベント詳細"
+        }
+      ],
+      "visible": true
     }
   ]
 }
