@@ -1,44 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital Meat - デジタルミート</title>
-  <meta name="description" content="Digital Meat（デジタルミート）公式ウェブサイト。我々は音楽を行う日本のバンドです。">
-  <meta property="og:title" content="Digital Meat - デジタルミート">
-  <meta property="og:description" content="我々は音楽を行う日本のバンドです">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Meat — Official Website</title>
+  <meta name="description" content="Digital Meat（デジタルミート）公式ウェブサイト。ライブ情報、バンド紹介、公式リンク。">
+  <meta property="og:title" content="Digital Meat — Official Website">
+  <meta property="og:description" content="我々は音楽を行う日本のバンドです。">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥩</text></svg>">
+  <link rel="alternate" hreflang="ja" href="./">
+  <link rel="alternate" hreflang="en" href="./en/">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100'/><text x='50' y='69' text-anchor='middle' font-size='54' fill='%2339ff14' font-family='monospace'>DM</text></svg>">
 </head>
-<body>
-  <header>
-    <h1 class="logo">
-      <span class="logo-bracket">[</span>Digital Meat<span class="logo-bracket">]</span>
-    </h1>
-    <p class="tagline" id="tagline"></p>
-    <div id="sns-icons" class="sns-icons"></div>
+<body data-lang="ja" data-base=".">
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Digital Meat ホーム">
+      <picture>
+        <source media="(max-width: 700px)" srcset="./assets/logo/official-a-white.svg">
+        <img src="./assets/logo/official-b-white.svg" alt="Digital Meat">
+      </picture>
+    </a>
+    <nav class="primary-nav" aria-label="メインナビゲーション">
+      <a class="is-current" href="./" aria-current="page">Home</a>
+      <a href="./live/">Live</a>
+      <a href="./about/">About</a>
+      <a href="./contact/">Contact</a>
+    </nav>
+    <a class="language-switch" href="./en/" lang="en" hreflang="en">EN</a>
   </header>
 
   <main>
-    <section id="lives" class="section">
-      <h2 class="section-title">&gt; LIVES<span class="cursor">_</span></h2>
-      <div id="lives-container">
-        <p class="loading">loading...</p>
-      </div>
+    <section class="hero">
+      <p class="eyebrow">JAPAN / EST. 2025</p>
+      <h1>我々は音楽を行う<br>日本のバンドです。</h1>
+      <p class="hero-copy">スタジオとライブを重ねながら、音を更新し続けています。</p>
+      <a class="text-link" href="./about/">バンドについて <span aria-hidden="true">→</span></a>
     </section>
 
-    <section id="members" class="section">
-      <h2 class="section-title">&gt; MEMBERS<span class="cursor">_</span></h2>
-      <div id="members-container"></div>
-      <p id="formed" class="formed"></p>
+    <section class="panel home-live" aria-labelledby="next-live-heading">
+      <div class="section-heading">
+        <p class="section-index">01</p>
+        <h2 id="next-live-heading">Next live</h2>
+      </div>
+      <div id="next-live"><p class="loading">loading...</p></div>
+      <a class="text-link section-link" href="./live/">ライブ情報を見る <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="panel" aria-labelledby="official-links-heading">
+      <div class="section-heading">
+        <p class="section-index">02</p>
+        <h2 id="official-links-heading">Official links</h2>
+      </div>
+      <div id="social-list" class="social-list"><p class="loading">loading...</p></div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; <span id="year"></span> Digital Meat</p>
+  <footer class="site-footer">
+    <p>© <span data-current-year></span> Digital Meat</p>
+    <p class="footer-status">DIGITAL MEAT / OFFICIAL</p>
   </footer>
-
-  <script src="app.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
