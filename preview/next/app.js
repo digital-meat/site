@@ -43,6 +43,11 @@
     });
   }
 
+  function liveField(live, key) {
+    var translated = live[key + "_en"];
+    return lang === "en" && translated ? translated : live[key];
+  }
+
   function showError(message) {
     var el = document.createElement("div");
     el.style.cssText =
@@ -103,11 +108,11 @@
         html +=
           '<div class="live-summary-line1">' +
           '<span class="live-date">' + escapeHtml(formatDate(live.date)) + "</span>" +
-          '<span class="live-title">' + escapeHtml(live.title) + "</span>" +
+          '<span class="live-title">' + escapeHtml(liveField(live, "title")) + "</span>" +
           "</div>";
         var sub = [];
-        if (live.venue) sub.push(escapeHtml(live.venue));
-        if (live.description) sub.push(escapeHtml(live.description));
+        if (live.venue) sub.push(escapeHtml(liveField(live, "venue")));
+        if (live.description) sub.push(escapeHtml(liveField(live, "description")));
         if (sub.length > 0) {
           html +=
             '<div class="live-summary-line2">' + sub.join(" / ") + "</div>";
@@ -120,13 +125,13 @@
         if (live.venue) {
           html +=
             "<p><span class=\"label\">" + (lang === "en" ? "Venue" : "会場") + ": </span>" +
-            escapeHtml(live.venue) +
+            escapeHtml(liveField(live, "venue")) +
             "</p>";
         }
         if (live.address) {
           html +=
             "<p><span class=\"label\">" + (lang === "en" ? "Address" : "住所") + ": </span>" +
-            escapeHtml(live.address) +
+            escapeHtml(liveField(live, "address")) +
             "</p>";
         }
         if (live.open || live.start) {
@@ -139,14 +144,14 @@
         if (live.price) {
           html +=
             "<p><span class=\"label\">" + (lang === "en" ? "Price" : "料金") + ": </span>" +
-            escapeHtml(live.price) +
+            escapeHtml(liveField(live, "price")) +
             "</p>";
         }
         if (live.description) {
-          html += "<p>" + escapeHtml(live.description) + "</p>";
+          html += "<p>" + escapeHtml(liveField(live, "description")) + "</p>";
         }
         if (live.detail) {
-          var rows = live.detail.split("/").map(function (entry) {
+          var rows = liveField(live, "detail").split("/").map(function (entry) {
             entry = entry.trim();
             var m = entry.match(/^(\S+)\s+(.+)$/);
             if (m) {
@@ -163,7 +168,7 @@
           });
           html +=
             '<table class="timetable">' +
-            "<tr><th>時間</th><th>出演</th></tr>" +
+            "<tr><th>" + (lang === "en" ? "Time" : "時間") + "</th><th>" + (lang === "en" ? "Act" : "出演") + "</th></tr>" +
             rows.join("") +
             "</table>";
         }
@@ -174,7 +179,7 @@
               '<a href="' +
               escapeHtml(link.url) +
               '" target="_blank" rel="noopener">' +
-              escapeHtml(link.label || link.url) +
+              escapeHtml(lang === "en" ? (link.label_en || link.label || link.url) : (link.label || link.url)) +
               "</a> ";
           });
           html += "</p>";

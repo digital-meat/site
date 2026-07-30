@@ -23,14 +23,20 @@
     {
       "id": "kerodon-2026-08-23",
       "title": "kerodon",
+      "title_en": "kerodon",
       "date": "2026-08-23",
       "open": "18:00",
       "start": "18:30",
       "venue": "大宮ヒソミネ",
+      "venue_en": "Hisomine, Omiya",
       "address": "〒331-0812 埼玉県さいたま市北区宮原町2-7-12 1F（宮原駅）",
+      "address_en": "2-7-12 Miyahara-cho, Kita-ku, Saitama 331-0812 (Miyahara Station)",
       "price": "前売 ¥2,400 / 当日 ¥2,400（+1オーダー）",
+      "price_en": "Advance ¥2,400 / Door ¥2,400 (+1 order)",
       "description": "Digital Meat 出演: 18:30〜19:00",
+      "description_en": "Digital Meat: 18:30–19:00",
       "detail": "18:30〜19:00 Digital Meat / 19:10〜19:40 Meadow / 19:45〜20:15 ベリヴェリ / 20:25〜20:55 Badger’s Dream / 21:15〜21:45 kill me Elkとzoo zoo Adults",
+      "detail_en": "18:30–19:00 Digital Meat / 19:10–19:40 Meadow / 19:45–20:15 ベリヴェリ / 20:25–20:55 Badger’s Dream / 21:15–21:45 kill me Elkとzoo zoo Adults",
       "acts": [
         "kill me Elkとzoo zoo Adults",
         "Badger’s Dream",
@@ -41,7 +47,8 @@
       "links": [
         {
           "url": "https://hisomine.com/schedules/view/5405",
-          "label": "大宮ヒソミネ イベント詳細"
+          "label": "大宮ヒソミネ イベント詳細",
+          "label_en": "Hisomine event details"
         }
       ],
       "visible": true
