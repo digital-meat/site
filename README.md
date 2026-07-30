@@ -1,69 +1,93 @@
 # Digital Meat 公式ウェブサイト
 
-Digital Meat の日英対応公式サイト。黒とグリーンの既存ターミナル調を継承し、公式ロゴを使用しています。GitHub Pages で公開する静的サイトです。
+黒背景 + 緑文字のターミナル風バンドホームページ。GitHub Pages でホスティング。
 
-## 公開ページ
+## ファイル構成
 
-- `/` — 日本語 Home
-- `/live/` — 日本語 Live（今後の予定／過去ログ）
-- `/about/` — 日本語 About
-- `/contact/` — 日本語 Contact
-- `/en/` 以下 — 各ページの英語版
-
-初期公開範囲に楽曲一覧、歌詞、制作中音源、News、問い合わせフォームは含めません。
-
-## コンテンツ更新
-
-日常的な情報更新は `content/` 内の JSON を編集します。
-
-```text
+```
+index.html          ... メインページ（編集不要）
+style.css           ... スタイル（編集不要）
+app.js              ... レンダリング処理（編集不要）
 content/
-  site.json    バンド名、結成日、メンバー、公式SNS
-  lives.json   ライブ情報
+  site.json         ... バンド情報・メンバー・SNSリンク
+  lives.json        ... ライブ情報
 ```
 
-`lives.json` の `visible` が `false` の項目は表示されません。日付を過ぎた項目は削除されず、Live ページの Archive に自動で移ります。今後の予定がない場合は、その旨を案内します。
+**コンテンツの更新は `content/` フォルダ内の JSON ファイルを編集するだけです。**
+HTML・CSS・JS を触る必要はありません。
 
-ライブ情報の基本形式:
+> **JSON の書き方をミスった場合**: サイト上に赤いエラーメッセージが表示されます。カンマの過不足、閉じカッコの漏れなどを確認してください。
+
+> **ライブの日付が過ぎると**: 自動的にトップから消えます。`lives.json` から消す必要はありません。
+
+---
+
+## コンテンツ更新方法
+
+### GitHub の Web UI から編集する場合（推奨）
+
+1. GitHub でこのリポジトリを開く
+2. `content/lives.json` をクリック
+3. 右上の鉛筆アイコン（Edit this file）をクリック
+4. JSON を編集
+5. 「Commit changes」ボタンで保存
+
+### ライブ情報を追加する (`content/lives.json`)
+
+`lives` 配列に以下の形式でオブジェクトを追加：
 
 ```json
 {
-  "id": "event-2026-09-01",
-  "title": "イベント名",
-  "date": "2026-09-01",
+  "id": "event-2026-04-01",
+  "title": "ライブタイトル",
+  "date": "2026-04-01",
   "open": "18:00",
   "start": "18:30",
   "venue": "会場名",
   "address": "住所",
-  "price": "料金",
-  "description": "補足",
-  "detail": "18:30 バンドA / 19:10 Digital Meat",
+  "price": "前売 ¥3,000 / 当日 ¥3,500（+1D ¥600）",
+  "description": "補足説明があれば",
+  "detail": "18:00〜18:30 バンドA / 18:40〜19:10 Digital Meat / 19:20〜19:50 バンドB",
   "links": [
-    { "url": "https://example.com/", "label": "イベント詳細" }
+    { "url": "https://example.com/ticket", "label": "チケット予約" }
   ],
   "visible": true
 }
 ```
 
-## ロゴ
+| フィールド | 必須 | 説明 |
+|---|---|---|
+| `id` | Yes | ユニークな識別子（何でもOK） |
+| `title` | Yes | ライブ/イベント名 |
+| `date` | Yes | 日付（`YYYY-MM-DD` 形式）。過ぎたら自動で非表示 |
+| `open` | No | 開場時間 |
+| `start` | No | 開演時間 |
+| `venue` | No | 会場名 |
+| `address` | No | 住所 |
+| `price` | No | 料金 |
+| `description` | No | 補足説明（サマリー行にも表示される） |
+| `detail` | No | タイムテーブル（`時間 バンド名 / 時間 バンド名` 形式。テーブル表示される） |
+| `links` | No | 関連リンクの配列 |
+| `visible` | Yes | `true` で表示、`false` で非表示 |
 
-`assets/logo/` には受領原本からコピーした公式透過白ロゴを配置しています。
+### メンバー情報・SNS を編集する (`content/site.json`)
 
-- `official-b-white.svg` — デスクトップヘッダー
-- `official-a-white.svg` — モバイルヘッダー
+`members` 配列や `sns` 配列を直接編集してください。
 
-原本は管理プロジェクトの `assets-inbox/logo-original/` にあり、このリポジトリからは変更しません。
+---
 
-## ローカル確認
+## GitHub Pages の設定
 
-リポジトリ直下で:
+1. リポジトリの Settings → Pages を開く
+2. Source を「Deploy from a branch」にする
+3. Branch を `main`（または使用するブランチ）、フォルダを `/ (root)` に設定
+4. Save
+
+---
+
+## ローカルでの確認
 
 ```bash
 python3 -m http.server 8000
+# ブラウザで http://localhost:8000 を開く
 ```
-
-ブラウザで `http://localhost:8000/` を開きます。`file://` では JSON の読み込みが制限されるため、必ずローカルサーバーを使用してください。
-
-## 公開
-
-GitHub への push と GitHub Pages の公開操作は人間が手動で行います。
