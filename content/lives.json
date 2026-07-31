@@ -1,6 +1,30 @@
 {
   "lives": [
     {
+      "id": "kashiwa-dome-2025-11-29",
+      "title": "柏DoMe",
+      "date": "2025-11-29",
+      "visible": true
+    },
+    {
+      "id": "hisomine-2025-12-28",
+      "title": "ヒソミネ",
+      "date": "2025-12-28",
+      "visible": true
+    },
+    {
+      "id": "hisomine-2026-02-01",
+      "title": "ヒソミネ",
+      "date": "2026-02-01",
+      "visible": true
+    },
+    {
+      "id": "emergenza-2026-02-08",
+      "title": "エマージェンザ",
+      "date": "2026-02-08",
+      "visible": true
+    },
+    {
       "id": "kerodon-2026-03-15",
       "title": "kerodon",
       "date": "2026-03-15",
@@ -18,6 +42,31 @@
         { "url": "https://maps.app.goo.gl/DxyxXrceoEiagsnn7", "label": "Google Maps" },
         { "url": "https://forms.gle/DcZVkmmYJ6wzQahE9", "label": "チケ予約" }
       ],
+      "visible": true
+    },
+    {
+      "id": "mj-wedding-party-2026-03-28",
+      "title": "MJ ウエディングパーティ",
+      "date": "2026-03-28",
+      "venue": "オッパーラ",
+      "visible": true
+    },
+    {
+      "id": "noju-rock-2026-05-29",
+      "title": "ノジュロック",
+      "date": "2026-05-29",
+      "visible": true
+    },
+    {
+      "id": "koshigaya-easygoings-2026-06-26",
+      "title": "越谷イージーゴーイングス",
+      "date": "2026-06-26",
+      "visible": true
+    },
+    {
+      "id": "lamama-2026-07-28",
+      "title": "ラママ",
+      "date": "2026-07-28",
       "visible": true
     },
     {
