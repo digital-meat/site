@@ -200,6 +200,35 @@
     });
   }
 
+  function renderArchive(data) {
+    var container = document.getElementById("archive-container");
+    if (!container) return;
+
+    var lives = (data.lives || []).filter(function (live) {
+      return live.visible !== false && isPast(live.date);
+    }).sort(function (a, b) {
+      return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+    });
+
+    if (lives.length === 0) {
+      container.innerHTML = '<p class="empty-message">過去の公演情報はまだありません。</p>';
+      return;
+    }
+
+    container.innerHTML = lives.map(function (live) {
+      var link = live.links && live.links.length ? live.links[0].url : "";
+      var tag = link ? "a" : "div";
+      var attrs = link
+        ? ' href="' + escapeHtml(link) + '" target="_blank" rel="noopener noreferrer"'
+        : "";
+      return "<" + tag + ' class="archive-row"' + attrs + ">" +
+        '<span class="archive-date">' + escapeHtml(live.date.replace(/-/g, ".")) + "</span>" +
+        '<span class="archive-title">' + escapeHtml(live.title) + "</span>" +
+        '<span class="archive-venue">' + escapeHtml(live.venue || "") + (link ? " ↗" : "") + "</span>" +
+        "</" + tag + ">";
+    }).join("");
+  }
+
   // --- Render: Site (members, SNS, tagline) ---
 
   function renderSite(data) {
@@ -275,6 +304,7 @@
     .then(function (results) {
       renderSite(results[0]);
       renderLives(results[1]);
+      renderArchive(results[1]);
     })
     .catch(function (err) {
       console.error("Failed to load content:", err);
