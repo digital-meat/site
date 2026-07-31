@@ -2,20 +2,51 @@
   "lives": [
     {
       "id": "kashiwa-dome-2025-11-29",
-      "title": "柏DoMe",
+      "title": "錯乱BOYs pre. \"中毒的轟音楽群\" ～錯乱BOYs 1st EP「Daydream Syndrome」release～",
       "date": "2025-11-29",
+      "open": "17:00",
+      "start": "17:30",
+      "venue": "柏DOMe",
+      "address": "千葉県柏市東上町2-2 石井ビル",
+      "price": "前売 ¥2,400 / 当日 ¥2,900（+1Drink ¥600）",
+      "acts": ["錯乱BOYs", "kaoru", "#40番台", "buruta", "Digital Meat", "Pale Blue Dot"],
+      "links": [
+        { "url": "https://kcdo.me/event/2025-11-29/", "label": "柏DOMe イベント詳細・メール予約" }
+      ],
       "visible": true
     },
     {
       "id": "hisomine-2025-12-28",
-      "title": "ヒソミネ",
+      "title": "tenderize",
       "date": "2025-12-28",
+      "open": "17:30",
+      "start": "18:00",
+      "venue": "大宮ヒソミネ",
+      "address": "〒331-0812 埼玉県さいたま市北区宮原町2-7-12 1F（宮原駅）",
+      "price": "前売 ¥2,200 / 当日 ¥2,200（+1オーダー）",
+      "description": "Digital Meat 出演: 19:20〜19:50",
+      "detail": "18:00〜18:30 シールドルーム / 18:40〜19:10 BARIBARIBIKE / 19:20〜19:50 Digital Meat / 20:00〜20:30 Love-Ghost-Lab!(from The Laundry) / 20:45〜21:15 gloptin",
+      "acts": ["gloptin", "Love-Ghost-Lab!(from The Laundry)", "Digital Meat", "BARIBARIBIKE", "シールドルーム"],
+      "links": [
+        { "url": "https://hisomine.com/schedules/view/5116", "label": "大宮ヒソミネ イベント詳細" }
+      ],
       "visible": true
     },
     {
       "id": "hisomine-2026-02-01",
-      "title": "ヒソミネ",
+      "title": "tenderize",
       "date": "2026-02-01",
+      "open": "17:30",
+      "start": "18:00",
+      "venue": "大宮ヒソミネ",
+      "address": "〒331-0812 埼玉県さいたま市北区宮原町2-7-12 1F（宮原駅）",
+      "price": "前売 ¥2,200 / 当日 ¥2,200（+1オーダー）",
+      "description": "Digital Meat 出演: 18:40〜19:10",
+      "detail": "18:00〜18:30 鉈車 Natasha / 18:40〜19:10 Digital Meat / 19:20〜19:50 Chinoiserie / 20:00〜20:30 Kokko Destruction / 20:40〜21:10 Re:Machina",
+      "acts": ["Re:Machina", "Kokko Destruction", "Chinoiserie", "Digital Meat", "鉈車 Natasha"],
+      "links": [
+        { "url": "https://hisomine.com/schedules/view/5098", "label": "大宮ヒソミネ イベント詳細" }
+      ],
       "visible": true
     },
     {
@@ -48,25 +79,38 @@
       "id": "mj-wedding-party-2026-03-28",
       "title": "MJ ウエディングパーティ",
       "date": "2026-03-28",
-      "venue": "オッパーラ",
+      "venue": "OPPA-LA",
       "visible": true
     },
     {
       "id": "noju-rock-2026-05-29",
-      "title": "ノジュロック",
+      "title": "ノジュロック 2026",
       "date": "2026-05-29",
+      "venue": "相武台下・河原",
+      "description": "5月29日 17時くらい〜朝（Digital Meat出演）",
+      "links": [
+        { "url": "https://nojukuyaro.com/2026/05/post-8085.html", "label": "ノジュロック 2026 詳細" }
+      ],
       "visible": true
     },
     {
       "id": "koshigaya-easygoings-2026-06-26",
-      "title": "越谷イージーゴーイングス",
+      "title": "EASYGOINGS",
       "date": "2026-06-26",
       "visible": true
     },
     {
       "id": "lamama-2026-07-28",
-      "title": "ラママ",
+      "title": "なんちゃらアイドル主催 大人の文化祭～初夏～",
       "date": "2026-07-28",
+      "open": "18:30",
+      "start": "19:00",
+      "venue": "渋谷La.mama",
+      "price": "前売 ¥2,500 / 当日 ¥2,500（+Drink）",
+      "acts": ["なんちゃらアイドル", "S.B.Q.アイドル部", "流星楽団", "ヒエポポン シスターズン", "Digital Meat"],
+      "links": [
+        { "url": "https://www.lamama.net/article/s-2026728-n/", "label": "渋谷La.mama イベント詳細" }
+      ],
       "visible": true
     },
     {
