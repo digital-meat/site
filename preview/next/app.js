@@ -235,9 +235,7 @@
     // Tagline
     var taglineEl = document.getElementById("tagline");
     if (taglineEl && data.tagline) {
-      taglineEl.textContent = lang === "en"
-        ? "We are a Japanese band making music."
-        : data.tagline;
+      taglineEl.textContent = "We are Japanene Rock’n’Roll Band";
     }
 
     // SNS Icons
