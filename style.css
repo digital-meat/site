@@ -162,6 +162,33 @@ main {
   background: rgba(57, 255, 20, 0.03);
 }
 
+.archive-row {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr) minmax(120px, auto);
+  gap: 12px;
+  padding: 12px 4px;
+  border-bottom: 1px solid #1a1a1a;
+  color: var(--green-text);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.archive-row:first-child {
+  border-top: 1px solid #1a1a1a;
+}
+
+.archive-date,
+.archive-venue {
+  color: var(--gray);
+  font-size: 0.72rem;
+}
+
+.archive-row:hover,
+.archive-row:focus-visible {
+  color: var(--green);
+  background: rgba(57, 255, 20, 0.03);
+}
+
 .cursor {
   animation: blink 1s step-end infinite;
 }
@@ -378,6 +405,11 @@ footer {
     align-items: flex-start;
     flex-direction: column;
     gap: 2px;
+  }
+
+  .archive-row {
+    grid-template-columns: 1fr;
+    gap: 1px;
   }
 
 }
